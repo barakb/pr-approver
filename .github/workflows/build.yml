@@ -15,6 +15,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pkg-config libssl-dev openssl
+          git clone git://git.openssl.org/openssl.git
+          cd openssl
+          ./config --openssldir=/usr/local/ssl
+          make
+          make test
+          sudo make install
+          export OPENSSL_DIR="/usr/local/ssl"
       - name: Compile
         id: compile
         uses: rust-build/rust-build.action@v1.4.5
@@ -22,6 +29,7 @@ jobs:
           RUSTTARGET: x86_64-unknown-linux-musl
           UPLOAD_MODE: none
           TOOLCHAIN_VERSION: 1.78
+          OPENSSL_DIR: "/usr/local/ssl"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
