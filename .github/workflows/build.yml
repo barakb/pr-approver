@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: install libssl-dev
+      - name: install pkg-config libssl-dev and openssl
         run: sudo apt-get install libssl-dev openssl
       - name: Compile
         id: compile
