@@ -18,15 +18,11 @@ async fn main() -> Result<()> {
     let personal_access_token = std::env::var("GITHUB_PERSONAL_ACCESS_TOKEN")?;
     let personal_access_token = PersonalAccessToken::new(personal_access_token);
     let config = APIConfig::with_token(personal_access_token).shared();
-    let forever = task::spawn(async move {
-        loop {
-            for git_repo in git_repositories.clone() {
-                let f = process_repo(&config, &authors, git_repo).await;
-            }
-            tokio::time::sleep(tokio::time::Duration::from_secs(60)).await;
-        }
-    });
-    forever.await?;
+    for git_repo in git_repositories.clone() {
+        let f = process_repo(&config, &authors, git_repo).await;
+    }
+    tokio::time::sleep(tokio::time::Duration::from_secs(60)).await;
+
     Ok(())
 }
 
