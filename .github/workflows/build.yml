@@ -11,8 +11,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@master
-      - name: install pkg-config libssl-dev and openssl
-        run: sudo apt-get install libssl-dev openssl
       - name: Compile
         id: compile
         uses: rust-build/rust-build.action@v1.4.5
