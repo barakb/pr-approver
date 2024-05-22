@@ -14,7 +14,7 @@ jobs:
       - name: build open-ssl
         run: |
           sudo apt-get update
-          sudo apt-get install -y pkg-config libssl-dev openssl openssl-devel
+          sudo apt-get install -y pkg-config libssl-dev openssl
           which openssl
           openssl version
       - name: Compile
