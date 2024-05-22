@@ -1,6 +1,5 @@
 use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, PullRequestReview, PullRequestSimple, PullsSubmitReviewRequest, PullsSubmitReviewRequestEvent, Request, SharedAPIConfig};
 use serde::{Deserialize, Serialize};
-use tokio::task;
 
 pub type Result<T> = core::result::Result<T, Error>;
 
@@ -21,8 +20,6 @@ async fn main() -> Result<()> {
     for git_repo in git_repositories.clone() {
         let f = process_repo(&config, &authors, git_repo).await;
     }
-    tokio::time::sleep(tokio::time::Duration::from_secs(60)).await;
-
     Ok(())
 }
 
