@@ -19,9 +19,10 @@ jobs:
           cd openssl
           ./config --openssldir=/usr/local/ssl
           make
-          make test
           sudo make install
           export OPENSSL_DIR="/usr/local/ssl"
+          which openssl
+          openssl version
       - name: Compile
         id: compile
         uses: rust-build/rust-build.action@v1.4.5
