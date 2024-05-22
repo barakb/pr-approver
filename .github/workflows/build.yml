@@ -14,11 +14,12 @@ jobs:
       - name: Build the code
         uses: dtolnay/rust-toolchain@stable
       - name: Check that code can compile
-        run: cargo build   # Run the `cargo check` command
+        run: cargo build --release
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Binary
+          name: pr-approve
           path: |
-            ${{ steps.compile.outputs.BUILT_ARCHIVE }}
-            ${{ steps.compile.outputs.BUILT_CHECKSUM }}
+            ./target/release/pr-approve
+          overwrite: true
+          compression-level: 0
