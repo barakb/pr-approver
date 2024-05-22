@@ -1,0 +1,7 @@
+/target
+Cargo.lock
+.idea
+.ipr
+.env
+curl.sh
+.env.example
