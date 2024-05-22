@@ -11,19 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: build open-ssl
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pkg-config libssl-dev openssl
-          which openssl
-          openssl version
-      - name: Compile
-        id: compile
-        uses: rust-build/rust-build.action@v1.4.5
-        with:
-          RUSTTARGET: x86_64-unknown-linux-musl
-          UPLOAD_MODE: none
-          TOOLCHAIN_VERSION: 1.78
+      - name: Build the code
+        uses: dtolnay/rust-toolchain@stable
+      - name: Check that code can compile
+        run: cargo build   # Run the `cargo check` command
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
