@@ -17,12 +17,12 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - name: Check that code can compile
         run: cargo build --release
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: upload release
+        uses: softprops/action-gh-release@v1
         with:
-          name: pr-approve
-          path: |
-            ./target/release/pr-approve
-          overwrite: true
-          compression-level: 0
-          retention-days: 2
+          files: ./target/release/pr-approve
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          tag: v1.0.0
+          release_name: v1.0.0
+          draft: false
+          prerelease: false
