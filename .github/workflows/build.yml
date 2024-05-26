@@ -3,9 +3,6 @@ name: Build
 on:
   push:
     branches: [ master ]
-  schedule:
-    - cron: "0 0 1 * *"
-
 
 jobs:
   build:
@@ -17,12 +14,11 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - name: Check that code can compile
         run: cargo build --release
-      - name: upload release
-        uses: softprops/action-gh-release@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: ./target/release/pr-approve
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          tag: v1.0.0
-          release_name: latest
-          draft: false
-          prerelease: false
+          name: pr-approve
+          path: |
+            ./target/release/pr-approve
+          overwrite: true
+          compression-level: 0
