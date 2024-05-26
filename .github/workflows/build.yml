@@ -24,7 +24,7 @@ jobs:
           release_name: v1.0.0
           suppress_errors: true
       - name: upload release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: ./target/release/pr-approve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
