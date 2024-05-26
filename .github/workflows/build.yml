@@ -3,6 +3,9 @@ name: Build
 on:
   push:
     branches: [ master ]
+  schedule:
+    - cron: "0 0 1 * *"
+
 
 jobs:
   build:
@@ -22,3 +25,4 @@ jobs:
             ./target/release/pr-approve
           overwrite: true
           compression-level: 0
+          retention-days: 2
