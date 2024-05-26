@@ -22,7 +22,7 @@ jobs:
         with:
           files: ./target/release/pr-approve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          tag: ${{ github.sha }}
+          tag: v1.0.0
           release_name: latest
           draft: false
           prerelease: false
