@@ -17,6 +17,12 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - name: Check that code can compile
         run: cargo build --release
+      - name: delete release
+        uses: liudonghua123/delete-release-action@v1
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          release_name: v1.0.0
+          suppress_errors: true
       - name: upload release
         uses: softprops/action-gh-release@v1
         with:
