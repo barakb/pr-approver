@@ -18,7 +18,7 @@ unused = "allow" # For exploratory dev.
 
 [dependencies]
 dotenv = "0.15.0"
-octocrate = { version = "2.0.0", features = ["full"] }
+octocrate = { version = "1.0.0", features = ["full"] }
 tokio = { version = "1.37.0", features = ["rt", "rt-multi-thread", "macros"] }
 derive_more = { version = "1.0.0-beta.6", features = ["from"] }
 serde = { version = "1.0.202", features = ["derive"] }

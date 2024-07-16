@@ -3,7 +3,6 @@ name: Build
 on:
   push:
     branches: [ master ]
-
 jobs:
   build:
     name: Build
@@ -22,3 +21,5 @@ jobs:
             ./target/release/pr-approve
           overwrite: true
           compression-level: 0
+
+
